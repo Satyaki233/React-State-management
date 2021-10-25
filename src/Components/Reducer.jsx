@@ -1,4 +1,7 @@
 import React,{useReducer} from 'react'
+import Reducer01 from './Reducer01';
+
+export const CounterContext = React.createContext();
 
 const initState = {
     firstCounter: 0 ,
@@ -26,14 +29,15 @@ const Reducer = () => {
     const [count , dispatch ] = useReducer(reducer , initState);
     return (
         <div>
+            <CounterContext.Provider vlaue={{
+                 countState: count , countDispatch: dispatch
+            }}>
+
+                </CounterContext.Provider>
           first -   {count.firstCounter} <br/>
           second - {count.secondCounter} <br/>
-            <button onClick={()=>{dispatch({type :'increment' , value : 1})}}>+</button>
-            <button onClick={()=>{dispatch({type:'decrement' , value : 1})}}>-</button>
-            <button onClick={()=>{dispatch({type:'increment2'})}}>+2</button>
-            <button onClick={()=>{dispatch({type:'decrement2'})}}>-2</button>
-            <button onClick={()=>{dispatch({type : 'reset'})}}>reset</button>
-
+          <Reducer01/>
+           
         </div>
     )
 }
