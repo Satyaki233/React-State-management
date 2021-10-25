@@ -1,7 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState , useContext } from 'react'
 
-const InputAndObject = () => {
+
+const Form = () => {
+   
     const [name , setname ] = useState({firstname: '' , lastname: ''});
+    const addInList =() =>{
+        console.log(name)
+       
+    }
+    
     return (
         <div>
             <input type="text" value={name.firstname} onChange={e => setname({...name ,firstname : e.target.value})}/>
@@ -10,8 +17,9 @@ const InputAndObject = () => {
                  firstname = {name.firstname},
                  lastname = {name.lastname}
              </div>
+             <button onClick={addInList}>Add in List </button>
         </div>
     )
 }
 
-export default InputAndObject
+export default Form;
