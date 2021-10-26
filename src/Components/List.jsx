@@ -6,8 +6,8 @@ const List = () => {
     const user = useContext(UsersContext)
     return (
         <div>
-          {user.UsersList.map(item=>
-                 <div key={item.id}><h2>{item.firstname} - {item.lastname}</h2></div>
+          {user.userState.map(item=>
+                 <div key={Math.random()}><h2>{item.firstname} - {item.lastname}</h2></div>
                 )}
         </div>
     )

@@ -1,13 +1,18 @@
 import React,{useState , useContext } from 'react'
-
+import {UsersContext } from '../App'
 
 const Form = () => {
-   
+    const user = useContext(UsersContext);
     const [name , setname ] = useState({firstname: '' , lastname: ''});
     const addInList =() =>{
-        console.log(name)
-       
+        console.log(name);
+        user.userDispatch({type : 'addUser' , value : name})
+        clearInput();
     }
+
+    const clearInput =()=>{
+        setname({firstname: '' , lastname: ''})
+    } 
     
     return (
         <div>
@@ -18,6 +23,7 @@ const Form = () => {
                  lastname = {name.lastname}
              </div>
              <button onClick={addInList}>Add in List </button>
+             
         </div>
     )
 }
